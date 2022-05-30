@@ -21,6 +21,8 @@ async function run() {
 
     const productCollection = client.db('db_manufacture').collection('parts');
 
+    //all item load 
+
     app.get('/products', async (req, res) => {
       const query = {};
       const cursor = productCollection.find(query);
@@ -28,6 +30,9 @@ async function run() {
       res.send(services);
     });
 
+
+
+    // single item load 
     app.get('/products/:id',async(req,res)=>{
       const id = req.params.id;
       const query = {_id: ObjectId(id)};
